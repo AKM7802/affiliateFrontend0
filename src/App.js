@@ -13,8 +13,8 @@ import { Fragment, useEffect} from 'react';
 
 function App() {
   //const url="https://sheltered-ocean-62008.herokuapp.com/"
-  //const url="http://localhost:8080/"
-  const url="fywo/"
+  const url="http://localhost:8080/"
+  //const url="fywo/"
   useEffect(()=>{
         // const header=document.querySelector('.banner') 
       
