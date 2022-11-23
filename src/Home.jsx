@@ -4,6 +4,7 @@ import { useState,useEffect } from 'react'
 const Home=(props)=>{
     const [containerdata,setcontainerdata]=useState([])
     const [productdata,setproductdata]=useState([])
+    const [programdata,setprogramdata]=useState([])
     let index=0;
     const loadContent=async()=>{
         
@@ -17,6 +18,11 @@ const Home=(props)=>{
         
         setproductdata(productjson.data.doc)
 
+        const programlink=await fetch(`${props.url}api/programs`)
+        const programjson=await programlink.json()
+        
+        setprogramdata(programjson.data.doc)
+
         
 
     }
@@ -28,6 +34,22 @@ const Home=(props)=>{
     return(
     <div class="content" id="content">
         <div class="home-content-block">
+            <h1 className='content-block-heading'>ALGORITHMS & PROGRAMS</h1>
+            <div class="content-card-collection">
+                {programdata.map((programs,i)=>{
+                    if(i>10) return null
+                    return(
+                        <a href={`/algo/${programs.slug}`}>
+                            <div class="program-home-card">
+                                <div><span className='program-home-name'>{programs.programName}</span></div>
+                            </div>
+                        </a>
+                    )
+                })}
+                
+
+                
+            </div>
             {containerdata.map((container)=>{
                 index=0;
                 return(<>

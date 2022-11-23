@@ -8,6 +8,7 @@ import Content from './Content';
 import Category from './Category';
 import About from './About'
 import Contact from './Contact';
+import Programpage from './Programpage';
 import { Fragment, useEffect} from 'react';
 
 
@@ -99,6 +100,7 @@ function App() {
                 </Fragment>}>
               </Route>
               <Route path="/:id" element={<Content url={url}/>}></Route>
+              <Route path="/algo/:id" element={<Programpage url={url}/>}></Route>
               <Route path="/category" element={<Category url={url}/>}></Route>
               <Route path="/about" element={<About url={url}/>}></Route>
           </Routes>
