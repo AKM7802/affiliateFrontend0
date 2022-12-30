@@ -29,7 +29,6 @@ const Content=(props)=>{
         loadContent();
         document.querySelector('.navbar').classList.add('sticky2');
         document.querySelector('.cat').setAttribute("href","/category");
-        document.querySelector('.abt').setAttribute("href","/about");
         
     },[])
     

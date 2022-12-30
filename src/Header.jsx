@@ -1,12 +1,21 @@
-import { useEffect } from "react"
+import { useEffect,useState } from "react"
+
 
 import { useLocation } from "react-router-dom"
-const Header=()=>{
+import SearchBar from "./components/SearchBar"
+
+const Header=({changeHandler,searchElement,searchdata})=>{
     const location=useLocation()
+    const [enableSearch,setEnableSearch]=useState(false)
     
     useEffect(()=>{
         
-        if(location.pathname !== "/") document.querySelector('.navbar').classList.add('sticky2')
+        if(location.pathname !== "/"){
+            document.querySelector('.cat').setAttribute("href","/category");
+            document.querySelector('.navbar').classList.add('sticky2')
+            setEnableSearch(true)
+            
+        }else setEnableSearch(false)
     },[location])
     
 
@@ -28,14 +37,20 @@ const Header=()=>{
                                     <a class="nav-link cat" href="#category">Category</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link abt" href="#about">About Us</a>
+                                    <a class="nav-link abt" href="/algo-content">Algorithms</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link cnt" href="#contact">Contact</a>
-                                </li>
+                                
                                 
                                 
                             </ul>
+                            {
+                                enableSearch===true && 
+                                <div className="searchHeaderContainer">
+                                    <SearchBar changeHandler={changeHandler} searchElement={searchElement} searchdata={searchdata} shead={true}/> 
+                                </div>
+
+                            }
+                            
                         </div>
                     
                      
